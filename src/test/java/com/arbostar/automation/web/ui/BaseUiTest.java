@@ -21,6 +21,6 @@ public abstract class BaseUiTest {
     @BeforeAll
     public void setUp() {
         driver = ArbostarSeleniumWebDriverProvider.getWebDriver();
-        driver.get(ArbostarConfig.getBaseUrl() + "workspace");
+        driver.get(ArbostarConfig.getBaseUrl());
     }
 }

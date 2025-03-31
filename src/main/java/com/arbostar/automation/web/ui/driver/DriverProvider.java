@@ -16,9 +16,7 @@ import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.arbostar.automation.web.ui.driver.DriverProvider.Browser.CHROME;
-import static com.arbostar.automation.web.ui.driver.DriverProvider.Browser.FIREFOX;
-
+@SuppressWarnings("ALL")
 public class DriverProvider {
 
     private RemoteWebDriver driver;
@@ -40,7 +38,7 @@ public class DriverProvider {
             prefs.put("intl.accept_languages", "ru,ru_RU");
             options.setExperimentalOption("prefs", prefs);
             options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
-            options.addArguments("--headless=new");
+            //options.addArguments("--headless=new");
             options.setCapability("bstack:options", browserstackOptions);
             options.addArguments("--remote-allow-origins=*");
             //options.setLogLevel(ChromeDriverLogLevel.ALL); //запуск подробного логгирования
@@ -49,7 +47,7 @@ public class DriverProvider {
             System.setProperty("browserType", Browser.FIREFOX.name().toLowerCase());
             WebDriverManager.firefoxdriver().setup();
             FirefoxOptions options = new FirefoxOptions();
-            options.addArguments("--headless=new");
+            //options.addArguments("--headless=new");
             options.addPreference("intl.accept_languages", "ru-RU");
             options.setCapability("bstack:options", browserstackOptions);
             initWebDriver(options);
