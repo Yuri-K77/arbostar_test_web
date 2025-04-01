@@ -1,12 +1,14 @@
 package com.arbostar.automation.web.ui.actions;
 
 import com.arbostar.automation.web.utils.PropertyLoader;
+import org.awaitility.Awaitility;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Класс, описывающий базовые действия над вебэлементами.
@@ -34,6 +36,10 @@ public class WebActionManager {
         return driverWait;
     }
 
+    private WebElement waitGetClickableElement(WebElement element) {
+        return driverWait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
     public void clickOnElement(WebElement element) {
         waitGetClickableElement(element).click();
     }
@@ -41,6 +47,19 @@ public class WebActionManager {
     public void clickOnElementWithJS(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].click();", element);
+    }
+
+    public void clickOnElementWithPollingInterval(WebElement element) {
+        Awaitility
+                .given()
+                .pollInterval(100, TimeUnit.MILLISECONDS)
+                .atMost(2000, TimeUnit.MILLISECONDS)
+                .pollInSameThread()
+                .ignoreExceptions()
+                .until(() -> {
+                    clickOnElement(element);
+                    return true;
+                });
     }
 
     public boolean waitIsElementVisible(WebElement element) {
@@ -69,10 +88,6 @@ public class WebActionManager {
         return driverWait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public WebElement waitGetClickableElement(WebElement element) {
-        return driverWait.until(ExpectedConditions.elementToBeClickable(element));
-    }
-
     public void sendKeyEscapeAction() {
         WebElement currentElement = driver.switchTo().activeElement();
         currentElement.sendKeys(Keys.ESCAPE);
@@ -97,7 +112,7 @@ public class WebActionManager {
         }
     }
 
-    public void clickClearInputDataInField(WebElement element, String text) {
+    public void inputDataInField(WebElement element, String text) {
         WebElement webElement = waitGetClickableElement(element);
         webElement.click();
         webElement.clear();

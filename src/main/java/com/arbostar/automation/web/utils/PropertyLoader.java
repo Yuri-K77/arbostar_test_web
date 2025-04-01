@@ -2,8 +2,7 @@ package com.arbostar.automation.web.utils;
 
 import lombok.SneakyThrows;
 
-import java.io.FileOutputStream;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Properties;
 
 public class PropertyLoader {

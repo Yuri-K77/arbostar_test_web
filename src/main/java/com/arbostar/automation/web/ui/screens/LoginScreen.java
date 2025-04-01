@@ -1,9 +1,6 @@
 package com.arbostar.automation.web.ui.screens;
 
-import com.arbostar.automation.web.configuration.ArbostarConfig;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 public class LoginScreen extends AbstractScreen {
 
@@ -12,9 +9,19 @@ public class LoginScreen extends AbstractScreen {
     }
 
     @Override
-    public LoginScreen waitIsScreenOpen() {
+    public LoginScreen openScreen() {
+        return this;
+    }
+
+    @Override
+    public LoginScreen waitScreenOpen() {
         webActionManager.waitGetVisibleElement(getLoginButton());
         return this;
+    }
+
+    @Override
+    public boolean isScreenOpen() {
+        return webActionManager.isElementDisplayed(getLoginButton());
     }
 
     private WebElement getUsernameField() {
@@ -34,19 +41,17 @@ public class LoginScreen extends AbstractScreen {
     }
 
     public LoginScreen inputUsername(String data) {
-        getUsernameField().clear();
-        getUsernameField().sendKeys(data);
+        webActionManager.inputDataInField(getUsernameField(), data);
         return this;
     }
 
     public LoginScreen inputPassword(String data) {
-        getPasswordField().clear();
-        getPasswordField().sendKeys(data);
+        webActionManager.inputDataInField(getPasswordField(), data);
         return this;
     }
 
     public void clickLoginButton() {
-        webActionManager.waitGetClickableElement(getLoginButton()).click();
+        webActionManager.clickOnElement(getLoginButton());
     }
 
     public boolean isErrorMessageDisplayed() {

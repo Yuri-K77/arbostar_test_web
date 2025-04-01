@@ -1,6 +1,7 @@
 package com.arbostar.automation.web.ui.screens;
 
 import com.arbostar.automation.web.ui.actions.WebActionManager;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -23,15 +24,18 @@ public abstract class AbstractScreen {
         return webActionManager.getDriver();
     }
 
-    public AbstractScreen openScreen() {
-        return this;
-    }
+    public abstract AbstractScreen openScreen();
 
-    public AbstractScreen waitIsScreenOpen() {
-        return this;
-    }
+    public abstract AbstractScreen waitScreenOpen();
 
-    public boolean isScreenOpen() {
-        return false;
+    public abstract boolean isScreenOpen();
+
+    public final boolean waitIsScreenOpen() {
+        try {
+            waitScreenOpen();
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 }
