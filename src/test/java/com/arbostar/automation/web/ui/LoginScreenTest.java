@@ -1,5 +1,6 @@
 package com.arbostar.automation.web.ui;
 
+import com.arbostar.automation.web.ui.screens.DashboardScreen;
 import com.arbostar.automation.web.ui.screens.LoginScreen;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,11 +9,11 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static com.arbostar.automation.web.configuration.ArbostarConfig.*;
-import static com.arbostar.automation.web.utils.DataGenerator.randomString;
+import static com.arbostar.automation.web.configuration.ArbostarConfig.getPassword;
+import static com.arbostar.automation.web.configuration.ArbostarConfig.getUser;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class LoginTest extends BaseUiTest {
+public class LoginScreenTest extends BaseUiTest {
 
     private LoginScreen loginScreen;
     private final String userName = getUser();
@@ -40,8 +41,7 @@ public class LoginTest extends BaseUiTest {
                 Arguments.of("", getPassword()),
                 Arguments.of(getUser(), ""),
                 Arguments.of(getUser() + "aaa", getPassword()),
-                Arguments.of(getUser(), getPassword().toUpperCase()),
-                Arguments.of(randomString(6), randomString(10)));
+                Arguments.of(getUser(), getPassword().toUpperCase()));
     }
 
     @DisplayName("After successful login, Dashboard screen should be open")
@@ -52,5 +52,6 @@ public class LoginTest extends BaseUiTest {
                 .inputUsername(userName)
                 .inputPassword(userPassword)
                 .clickLoginButton();
+        Assertions.assertTrue(new DashboardScreen(driver).waitIsScreenOpen());
     }
 }

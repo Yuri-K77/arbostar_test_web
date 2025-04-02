@@ -30,11 +30,11 @@ public abstract class AbstractWebElement {
         return container;
     }
 
-    public WebElement findElement(By selector) {
+    public WebElement customFindElement(By selector) {
         return getContainer().findElement(selector);
     }
 
-    public List<WebElement> findElements(By selector) {
+    public List<WebElement> customFindElements(By selector) {
         return getContainer().findElements(selector);
     }
 
@@ -43,6 +43,6 @@ public abstract class AbstractWebElement {
     }
 
     public void waitElementToBeInvisible() {
-        webActionManager.waitElementToBeInvisible(container);
+        webActionManager.waitElementToBeInvisible(getContainer());
     }
 }
