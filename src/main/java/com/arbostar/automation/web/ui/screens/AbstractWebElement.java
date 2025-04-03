@@ -2,6 +2,7 @@ package com.arbostar.automation.web.ui.screens;
 
 import com.arbostar.automation.web.ui.actions.WebActionManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -21,6 +22,10 @@ public abstract class AbstractWebElement {
     public AbstractWebElement(WebActionManager webActionManager, WebElement container) {
         this.webActionManager = webActionManager;
         this.container = container;
+    }
+
+    public WebDriver getDriverFromAbstractWebElement() {
+        return webActionManager.getDriver();
     }
 
     /**

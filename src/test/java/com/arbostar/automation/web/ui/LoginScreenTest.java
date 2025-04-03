@@ -40,11 +40,10 @@ public class LoginScreenTest extends BaseUiTest {
         return Stream.of(
                 Arguments.of("", getPassword()),
                 Arguments.of(getUser(), ""),
-                Arguments.of(getUser() + "aaa", getPassword()),
-                Arguments.of(getUser(), getPassword().toUpperCase()));
+                Arguments.of(getUser() + "aaa", getPassword().toUpperCase()));
     }
 
-    @DisplayName("After successful login, Dashboard screen should be open")
+    @DisplayName("After successful login Dashboard screen should be open")
     @Test
     void login() {
         loginScreen

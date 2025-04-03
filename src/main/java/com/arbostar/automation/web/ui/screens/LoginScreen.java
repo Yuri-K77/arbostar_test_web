@@ -29,27 +29,27 @@ public class LoginScreen extends AbstractScreen {
         getUsernameField().sendKeys(ArbostarConfig.getUser());
         getPasswordField().sendKeys(ArbostarConfig.getPassword());
         webActionManager.clickOnElement(getLoginButton());
-        return new DashboardScreen(webActionManager.getDriver());
+        return new DashboardScreen(getDriverFromAbstractScreen());
     }
 
     private WebElement getUsernameField() {
-        return webActionManager.getDriver().findElement(By.cssSelector("#username"));
+        return getDriverFromAbstractScreen().findElement(By.cssSelector("#username"));
     }
 
     private WebElement getPasswordField() {
-        return webActionManager.getDriver().findElement(By.cssSelector("#password"));
+        return getDriverFromAbstractScreen().findElement(By.cssSelector("#password"));
     }
 
     private WebElement getLoginButton() {
-        return webActionManager.getDriver().findElement(By.cssSelector("#submit"));
+        return getDriverFromAbstractScreen().findElement(By.cssSelector("#submit"));
     }
 
     private WebElement getLoginError() {
-        return webActionManager.getDriver().findElement(By.cssSelector("#error_message"));
+        return getDriverFromAbstractScreen().findElement(By.cssSelector("#error_message"));
     }
 
     private WebElement getReCaptchaCheckbox() {
-        return webActionManager.getDriver().findElement(By.cssSelector("div.recaptcha-checkbox-checkmark"));
+        return getDriverFromAbstractScreen().findElement(By.cssSelector("div.recaptcha-checkbox-checkmark"));
     }
 
     public LoginScreen inputUsername(String data) {

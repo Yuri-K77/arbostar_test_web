@@ -20,7 +20,7 @@ public abstract class AbstractScreen {
         this.webActionManager = new WebActionManager(driver);
     }
 
-    public WebDriver getDriver() {
+    public WebDriver getDriverFromAbstractScreen() {
         return webActionManager.getDriver();
     }
 

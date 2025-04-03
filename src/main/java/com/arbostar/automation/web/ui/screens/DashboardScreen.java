@@ -11,7 +11,7 @@ public class DashboardScreen extends AbstractScreen{
     }
 
     public WebElement getContainer() {
-        return getDriver().findElement(By.cssSelector("section#content section.hbox.stretch"));
+        return getDriverFromAbstractScreen().findElement(By.cssSelector("section#content section.hbox.stretch"));
     }
 
     @Override
