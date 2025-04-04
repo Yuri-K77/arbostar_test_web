@@ -24,11 +24,17 @@ public abstract class AbstractScreen {
         return webActionManager.getDriver();
     }
 
-    public abstract AbstractScreen openScreen();
+    public AbstractScreen openScreen() {
+        return this;
+    }
 
-    public abstract AbstractScreen waitScreenOpen();
+    public AbstractScreen waitScreenOpen() {
+        return this;
+    }
 
-    public abstract boolean isScreenOpen();
+    public boolean isScreenOpen() {
+        return false;
+    }
 
     public final boolean waitIsScreenOpen() {
         try {

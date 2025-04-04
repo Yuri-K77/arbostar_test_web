@@ -29,4 +29,13 @@ public class DashboardScreen extends AbstractScreen{
     public boolean isScreenOpen() {
         return webActionManager.isElementDisplayed(getContainer());
     }
+
+    private WebElement getDashboardLeftSideIcon() {
+        return getDriverFromAbstractScreen().findElement(By.xpath("//span[text()='Dashboard']"));
+    }
+
+    public DashboardScreen clickDashboardLeftSideIcon() {
+        webActionManager.clickOnElement(getDashboardLeftSideIcon());
+        return this;
+    }
 }
