@@ -33,4 +33,8 @@ public class LeftSideNavigationMenu extends AbstractScreen {
     public void selectMainLeftNavBarItem(MainLeftNavBarItems item) {
         webActionManager.clickOnElementWithPollingInterval(getMainLeftNavBarItem(item));
     }
+
+    public boolean isLeftSideNavMenuExpanded() {
+        return !getContainer().getAttribute("class").contains("nav-xs");
+    }
 }
