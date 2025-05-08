@@ -19,7 +19,7 @@ public class LeftSideNavigationMenu extends AbstractScreen {
     }
 
     private List<WebElement> getMainLeftNavBarItems() {
-        return getContainer().findElements(By.cssSelector("nav.nav-primary>ul.nav>li.nav-block"));
+        return getContainer().findElements(By.cssSelector("nav.nav-primary>ul.nav>li.nav-block>a span.nav-name"));
     }
 
     public WebElement getMainLeftNavBarItem(MainLeftNavBarItems item) {
