@@ -9,17 +9,18 @@ public enum MainLeftNavBarItems implements AbstractTabs {
 
     DASHBOARD(0, "Dashboard"),
     CLIENTS(1, "Clients"),
-    LEADS(2, "Leads"),
-    TASKS(3, "Tasks"),
-    ESTIMATES(4, "Estimates"),
-    WORKORDERS(5, "Workorders"),
-    SCHEDULE(6, "Schedule"),
-    INVOICES(7, "Invoices"),
-    EQUIPMENT(8, "Equipment"),
-    PERSONNEL(9, "Personnel"),
-    ACCOUNTING(10, "Accounting"),
-    BUSINESS_INTELLIGENCE(11, "Business Intelligence"),
-    IMPORTANT_CONTACTS(12, "Important Contacts");
+    OLD_STUMPS(2,"Old Stumps"),
+    LEADS(3, "Leads"),
+    TASKS(4, "Tasks"),
+    ESTIMATES(5, "Estimates"),
+    WORKORDERS(6, "Workorders"),
+    SCHEDULE(7, "Schedule"),
+    INVOICES(8, "Invoices"),
+    EQUIPMENT(9, "Equipment"),
+    PERSONNEL(10, "Personnel"),
+    ACCOUNTING(11, "Accounting"),
+    BUSINESS_INTELLIGENCE(12, "Business Intelligence"),
+    IMPORTANT_CONTACTS(13, "Important Contacts");
 
     public final int index;
     public final String value;
