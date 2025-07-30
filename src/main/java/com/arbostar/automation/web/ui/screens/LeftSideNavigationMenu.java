@@ -1,6 +1,6 @@
 package com.arbostar.automation.web.ui.screens;
 
-import com.arbostar.automation.web.enums.MainLeftNavBarItems;
+import com.arbostar.automation.web.enums.LeftSideNavMenuItems;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,23 +18,35 @@ public class LeftSideNavigationMenu extends AbstractScreen {
         return getDriverFromAbstractScreen().findElement(By.cssSelector("aside#nav"));
     }
 
-    private List<WebElement> getMainLeftNavBarItems() {
+    private List<WebElement> getLeftSideNavMenuItems() {
         return getContainer().findElements(By.cssSelector("nav.nav-primary>ul.nav>li.nav-block>a span.nav-name"));
     }
 
-    public WebElement getMainLeftNavBarItem(MainLeftNavBarItems item) {
-        return getMainLeftNavBarItems()
+    public WebElement getLeftSideNavMenuItem(LeftSideNavMenuItems item) {
+        return getLeftSideNavMenuItems()
                 .stream()
                 .filter(element -> element.getText().equals(item.getValue()))
                 .findAny()
                 .orElseThrow(() -> new NoSuchElementException("Navigation bar item \"" + item.getValue() + "\" is not displayed"));
     }
 
-    public void selectMainLeftNavBarItem(MainLeftNavBarItems item) {
-        webActionManager.clickOnElementWithPollingInterval(getMainLeftNavBarItem(item));
+    public void selectLeftSideNavMenuItem(LeftSideNavMenuItems item) {
+        webActionManager.clickOnElementWithPollingInterval(getLeftSideNavMenuItem(item));
     }
 
     public boolean isLeftSideNavMenuExpanded() {
         return !getContainer().getAttribute("class").contains("nav-xs");
+    }
+
+    public boolean isLeftSideNavMenuCollapsed() {
+        return getMinimizeSideBar().getAttribute("class").contains("active");
+    }
+
+    public WebElement getMinimizeSideBar() {
+        return getContainer().findElement(By.cssSelector("a[class*='nav-footer p-10 hidden-sm']"));
+    }
+
+    public void clickToMinimizeSideBar() {
+        webActionManager.clickOnElement(getMinimizeSideBar());
     }
 }

@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum MainLeftNavBarItems implements AbstractTabs {
+public enum LeftSideNavMenuItems implements AbstractTabs {
 
     DASHBOARD(0, "Dashboard"),
     CLIENTS(1, "Clients"),

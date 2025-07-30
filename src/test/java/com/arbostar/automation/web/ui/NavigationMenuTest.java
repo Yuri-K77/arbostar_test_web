@@ -1,6 +1,6 @@
 package com.arbostar.automation.web.ui;
 
-import com.arbostar.automation.web.enums.MainLeftNavBarItems;
+import com.arbostar.automation.web.enums.LeftSideNavMenuItems;
 import com.arbostar.automation.web.ui.screens.DashboardScreen;
 import com.arbostar.automation.web.ui.screens.LeftSideNavigationMenu;
 import org.junit.jupiter.api.*;
@@ -28,8 +28,17 @@ public class NavigationMenuTest extends BaseUiTest {
 
     @DisplayName("After click on left side menu item it should be expanded")
     @ParameterizedTest
-    @EnumSource(MainLeftNavBarItems.class)
-    void navMenuItemsShouldBeOpened(MainLeftNavBarItems enumItem) {
-        leftSideNavigationMenu.selectMainLeftNavBarItem(enumItem);
+    @Order(2)
+    @EnumSource(LeftSideNavMenuItems.class)
+    void leftSideNavMenuItemsShouldBeOpened(LeftSideNavMenuItems enumItem) {
+        leftSideNavigationMenu.selectLeftSideNavMenuItem(enumItem);
+    }
+
+    @DisplayName("After click on <Minimize the sidebar> left side menu should be collapsed")
+    @Test
+    @Order(3)
+    void leftSideNavMenuShouldBeCollapsedAfterClickMinimizeButton() {
+        leftSideNavigationMenu.clickToMinimizeSideBar();
+        Assertions.assertTrue(leftSideNavigationMenu.isLeftSideNavMenuCollapsed());
     }
 }
