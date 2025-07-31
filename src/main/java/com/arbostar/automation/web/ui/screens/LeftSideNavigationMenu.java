@@ -1,6 +1,7 @@
 package com.arbostar.automation.web.ui.screens;
 
 import com.arbostar.automation.web.enums.LeftSideNavMenuItems;
+import com.arbostar.automation.web.enums.LeftSideNavMenuNestedItems;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,11 +28,27 @@ public class LeftSideNavigationMenu extends AbstractScreen {
                 .stream()
                 .filter(element -> element.getText().equals(item.getValue()))
                 .findAny()
-                .orElseThrow(() -> new NoSuchElementException("Navigation bar item \"" + item.getValue() + "\" is not displayed"));
+                .orElseThrow(() -> new NoSuchElementException("Left side navigation menu item \"" + item.getValue() + "\" is not displayed"));
     }
 
     public void selectLeftSideNavMenuItem(LeftSideNavMenuItems item) {
         webActionManager.clickOnElementWithPollingInterval(getLeftSideNavMenuItem(item));
+    }
+
+    private List<WebElement> getLeftSideNavMenuNestedItems() {
+        return getContainer().findElements(By.cssSelector("nav.nav-primary>ul.nav>li.nav-block>ul.nav.lt>li"));
+    }
+
+    public WebElement getLeftSideNavMenuNestedItem(LeftSideNavMenuNestedItems nestedItem) {
+        return getLeftSideNavMenuNestedItems()
+                .stream()
+                .filter(element -> element.getText().equals(nestedItem.getValue()))
+                .findAny()
+                .orElseThrow(() -> new NoSuchElementException("Left side navigation menu nested item \"" + nestedItem.getValue() + "\" is not displayed"));
+    }
+
+    public void selectLeftSideNavMenuNestedItem(LeftSideNavMenuNestedItems nestedItem) {
+        webActionManager.clickOnElementWithPollingInterval(getLeftSideNavMenuNestedItem(nestedItem));
     }
 
     public boolean isLeftSideNavMenuExpanded() {

@@ -1,6 +1,7 @@
 package com.arbostar.automation.web.ui;
 
 import com.arbostar.automation.web.enums.LeftSideNavMenuItems;
+import com.arbostar.automation.web.enums.LeftSideNavMenuNestedItems;
 import com.arbostar.automation.web.ui.screens.DashboardScreen;
 import com.arbostar.automation.web.ui.screens.LeftSideNavigationMenu;
 import org.junit.jupiter.api.*;
@@ -9,7 +10,7 @@ import org.junit.jupiter.params.provider.EnumSource;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class NavigationMenuTest extends BaseUiTest {
+public class LeftSideNavigationMenuTest extends BaseUiTest {
 
     private LeftSideNavigationMenu leftSideNavigationMenu;
 
@@ -32,6 +33,14 @@ public class NavigationMenuTest extends BaseUiTest {
     @EnumSource(LeftSideNavMenuItems.class)
     void leftSideNavMenuItemsShouldBeOpened(LeftSideNavMenuItems enumItem) {
         leftSideNavigationMenu.selectLeftSideNavMenuItem(enumItem);
+    }
+
+    @DisplayName("After click on left side menu item it should be expanded")
+    @ParameterizedTest
+    @Order(3)
+    @EnumSource(LeftSideNavMenuNestedItems.class)
+    void leftSideNavMenuNestedItemsShouldBeOpenedWithScreens(LeftSideNavMenuNestedItems enumItem) {
+        leftSideNavigationMenu.selectLeftSideNavMenuNestedItem(enumItem);
     }
 
     @DisplayName("After click on <Minimize the sidebar> left side menu should be collapsed")
