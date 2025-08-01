@@ -53,7 +53,7 @@ public class WebActionManager {
         Awaitility
                 .given()
                 .pollInterval(100, TimeUnit.MILLISECONDS)
-                .atMost(2000, TimeUnit.MILLISECONDS)
+                .atMost(3000, TimeUnit.MILLISECONDS)
                 .pollInSameThread()
                 .ignoreExceptions()
                 .until(() -> {

@@ -19,6 +19,17 @@ public class LeftSideNavigationMenu extends AbstractScreen {
         return getDriverFromAbstractScreen().findElement(By.cssSelector("aside#nav"));
     }
 
+    @Override
+    public LeftSideNavigationMenu waitScreenOpen() {
+        webActionManager.waitGetVisibleElement(getContainer());
+        return this;
+    }
+
+    @Override
+    public boolean isScreenOpen() {
+        return webActionManager.isElementDisplayed(getContainer());
+    }
+
     private List<WebElement> getLeftSideNavMenuItems() {
         return getContainer().findElements(By.cssSelector("nav.nav-primary>ul.nav>li.nav-block>a span.nav-name"));
     }
@@ -32,7 +43,7 @@ public class LeftSideNavigationMenu extends AbstractScreen {
     }
 
     public void selectLeftSideNavMenuItem(LeftSideNavMenuItems item) {
-        webActionManager.clickOnElementWithPollingInterval(getLeftSideNavMenuItem(item));
+        webActionManager.clickOnElement(getLeftSideNavMenuItem(item));
     }
 
     private List<WebElement> getLeftSideNavMenuNestedItems() {
@@ -48,7 +59,7 @@ public class LeftSideNavigationMenu extends AbstractScreen {
     }
 
     public void selectLeftSideNavMenuNestedItem(LeftSideNavMenuNestedItems nestedItem) {
-        webActionManager.clickOnElementWithPollingInterval(getLeftSideNavMenuNestedItem(nestedItem));
+        webActionManager.clickOnElement(getLeftSideNavMenuNestedItem(nestedItem));
     }
 
     public boolean isLeftSideNavMenuExpanded() {
