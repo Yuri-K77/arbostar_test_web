@@ -1,7 +1,6 @@
 package com.arbostar.automation.web.ui.screens;
 
 import com.arbostar.automation.web.enums.LeftSideNavMenuItems;
-import com.arbostar.automation.web.enums.LeftSideNavMenuNestedItems;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,7 +19,7 @@ public class ClientsListScreen extends AbstractScreen {
     public ClientsListScreen openScreen() {
         new DashboardScreen(getDriverFromAbstractScreen()).openScreen();
         new LeftSideNavigationMenu(getDriverFromAbstractScreen()).selectLeftSideNavMenuItem(LeftSideNavMenuItems.CLIENTS);
-        new LeftSideNavigationMenu(getDriverFromAbstractScreen()).selectLeftSideNavMenuNestedItem(LeftSideNavMenuNestedItems.CLIENTS_LIST);
+        getDriverFromAbstractScreen().get("https://staging.arbostar.com/clients");
         return waitScreenOpen();
     }
 

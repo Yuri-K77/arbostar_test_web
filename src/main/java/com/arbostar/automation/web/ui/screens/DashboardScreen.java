@@ -30,12 +30,12 @@ public class DashboardScreen extends AbstractScreen{
         return webActionManager.isElementDisplayed(getContainer());
     }
 
-    private WebElement getDashboardLeftSideIcon() {
+    private WebElement getDashboardLeftSideNavigationMenuIcon() {
         return getDriverFromAbstractScreen().findElement(By.xpath("//span[text()='Dashboard']"));
     }
 
-    public DashboardScreen clickDashboardLeftSideIcon() {
-        webActionManager.clickOnElement(getDashboardLeftSideIcon());
+    public DashboardScreen clickDashboardLeftSideNavigationMenuIcon() {
+        webActionManager.clickOnElement(getDashboardLeftSideNavigationMenuIcon());
         return this;
     }
 }

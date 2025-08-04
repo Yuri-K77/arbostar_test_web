@@ -19,17 +19,6 @@ public class LeftSideNavigationMenu extends AbstractScreen {
         return getDriverFromAbstractScreen().findElement(By.cssSelector("aside#nav"));
     }
 
-    @Override
-    public LeftSideNavigationMenu waitScreenOpen() {
-        webActionManager.waitGetVisibleElement(getContainer());
-        return this;
-    }
-
-    @Override
-    public boolean isScreenOpen() {
-        return webActionManager.isElementDisplayed(getContainer());
-    }
-
     private List<WebElement> getLeftSideNavMenuItems() {
         return getContainer().findElements(By.cssSelector("nav.nav-primary>ul.nav>li.nav-block>a span.nav-name"));
     }
@@ -70,7 +59,7 @@ public class LeftSideNavigationMenu extends AbstractScreen {
         return getMinimizeSideBar().getAttribute("class").contains("active");
     }
 
-    public WebElement getMinimizeSideBar() {
+    private WebElement getMinimizeSideBar() {
         return getContainer().findElement(By.cssSelector("a[class*='nav-footer p-10 hidden-sm']"));
     }
 
