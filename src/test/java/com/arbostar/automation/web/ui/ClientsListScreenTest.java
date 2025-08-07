@@ -13,10 +13,11 @@ public class ClientsListScreenTest extends BaseUiTest {
         clientsListScreen = new ClientsListScreen(driver);
     }
 
-    @DisplayName("Open Clients list")
+    @DisplayName("<Clients list> screen should be displayed after opening")
     @Order(1)
     @Test
     void openClientsListScreen() {
         clientsListScreen.openScreen();
+        Assertions.assertTrue(clientsListScreen.isScreenOpen());
     }
 }

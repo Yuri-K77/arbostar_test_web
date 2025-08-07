@@ -12,7 +12,7 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <selenium>4.27.0</selenium>
-        <junit>5.12.1</junit>
+        <junit>5.13.4</junit>
         <rest_assured>5.5.1</rest_assured>
         <jackson>2.18.3</jackson>
         <arbostar.tag>ui,api</arbostar.tag>
