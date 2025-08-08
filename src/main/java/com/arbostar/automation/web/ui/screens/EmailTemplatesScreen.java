@@ -5,26 +5,26 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class ClientsListScreen extends AbstractScreen {
+public class EmailTemplatesScreen extends AbstractScreen {
 
-    public ClientsListScreen(WebDriver driver) {
+    public EmailTemplatesScreen(WebDriver driver) {
         super(driver);
     }
 
     public WebElement getContainer() {
-        return getDriverFromAbstractScreen().findElement(By.cssSelector("section#profile-view>div#client-list-section"));
+        return getDriverFromAbstractScreen().findElement(By.cssSelector("section.panel.panel-default.table-style.table-style-fit-to-screen"));
     }
 
     @Override
-    public ClientsListScreen openScreen() {
+    public EmailTemplatesScreen openScreen() {
         new DashboardScreen(getDriverFromAbstractScreen()).openScreen();
         new LeftSideNavigationMenu(getDriverFromAbstractScreen()).selectLeftSideNavMenuItem(LeftSideNavMenuItems.CLIENTS);
-        getDriverFromAbstractScreen().get("https://staging.arbostar.com/clients");
+        getDriverFromAbstractScreen().get("https://staging.arbostar.com/clients/letters");
         return waitScreenOpen();
     }
 
     @Override
-    public ClientsListScreen waitScreenOpen() {
+    public EmailTemplatesScreen waitScreenOpen() {
         webActionManager.waitGetVisibleElement(getContainer());
         return this;
     }
