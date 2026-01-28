@@ -12,9 +12,10 @@
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <selenium>4.27.0</selenium>
-        <junit>5.13.4</junit>
-        <rest_assured>5.5.1</rest_assured>
-        <jackson>2.18.3</jackson>
+        <junit>6.0.2</junit>
+        <rest_assured>6.0.0</rest_assured>
+        <jackson>3.0.4</jackson>
+        <jackson_annotations>2.21</jackson_annotations>
         <arbostar.tag>ui,api</arbostar.tag>
         <arbostar.runType>localrun</arbostar.runType>
     </properties>
@@ -75,16 +76,16 @@
             <version>${rest_assured}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <!-- https://mvnrepository.com/artifact/tools.jackson.core/jackson-databind -->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
+            <groupId>tools.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>${jackson}</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-core -->
+        <!-- https://mvnrepository.com/artifact/tools.jackson.core/jackson-core -->
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
+            <groupId>tools.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
             <version>${jackson}</version>
         </dependency>
@@ -93,7 +94,7 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
-            <version>${jackson}</version>
+            <version>${jackson_annotations}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
